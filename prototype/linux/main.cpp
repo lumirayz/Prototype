@@ -128,6 +128,8 @@ int main (int argc, char **argv)
 				SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_RESIZABLE);
 			SDL_SetAlpha(screen,SDL_SRCALPHA, CAIROSDL_AMASK);
 			cr = cairosdl_create (screen);
+			wrapper->setNeedsDisplay(true); // resized so we need to recalculate and redisplay everything
+			// FIXME: SDL seems to not send SDL_VIDEORESIZE events enough...
 		}
 		else
 		{
